@@ -40,14 +40,14 @@ const ProjectCard: React.FC<ProjectProps> = ({ project }) => {
         <div className="flex items-center text-gray-500 text-sm mb-4">
           <div className="flex items-center mr-4">
             <StarIcon className="text-yellow-400 mr-1" size={16} />
-            <span>{project.stars}</span>
+            <span></span>
           </div>
           <div className="flex items-center mr-4">
             <GitForkIcon className="text-blue-400 mr-1" size={16} />
-            <span>{project.forks}</span>
+            <span></span>
           </div>
           <div className="ml-auto">
-            <span>Updated {project.lastUpdate}</span>
+            <span></span>
           </div>
         </div>
         

@@ -14,12 +14,9 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="text-gray-500 text-sm">
-            <p>© {year} Your Name. All rights reserved.</p>
+            <p>© {year} Francisco Hauch. All rights reserved.</p>
           </div>
           
-          <div className="text-gray-500 text-sm mt-4 md:mt-0">
-            <p>Built with <span className="text-green-400">❤</span> using React</p>
-          </div>
         </div>
       </div>
     </footer>

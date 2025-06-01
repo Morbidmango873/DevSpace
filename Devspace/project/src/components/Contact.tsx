@@ -12,13 +12,12 @@ const Contact: React.FC = () => {
         
         <div className="max-w-3xl mx-auto">
           <p className="text-gray-400 text-lg mb-8 text-center">
-            Interested in working together? Feel free to reach out through any of the channels below.
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            Interessado em trabalhar junto me manda um oi, estou ansioso para ouvir e criar a sua ideia
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             <a 
-              href="mailto:your.email@example.com" 
+              href="mailto:fran.hauch@gmail.com" 
               className="flex items-center bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-md transition-colors"
             >
               <MailIcon className="mr-2 text-green-400" size={20} />

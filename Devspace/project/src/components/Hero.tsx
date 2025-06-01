@@ -1,5 +1,6 @@
 import React from 'react';
 import { TerminalIcon, GitBranchIcon, UserIcon } from './Icons';
+import Eu from "../imagens/EU.jpg"
 
 const Hero: React.FC = () => {
   return (
@@ -19,8 +20,7 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="text-gray-400 text-lg mb-8 max-w-lg">
-              Welcome to my portfolio! I specialize in creating elegant solutions with clean, efficient code. 
-              Explore my projects to see what I've been working on.
+              Bem vindo ao meu portifolio e espero que voce estejam gostando do que estao vendo, abaixo estão meus projetos não esqueça de dar uma olhada
             </p>
             
             <div className="flex space-x-4">
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
           <div className="lg:w-1/2 flex justify-center">
             <div className="w-72 h-72 rounded-full bg-gray-800 border-4 border-green-400 flex items-center justify-center">
               <span className="text-green-400 font-mono text-sm">
-                <UserIcon size={80} />
+                <img src={EU} />
               </span>
             </div>
           </div>
