@@ -42,11 +42,10 @@ const Hero: React.FC = () => {
           </div>
           
           <div className="lg:w-1/2 flex justify-center">
-            <div className="w-72 h-72 rounded-full bg-gray-800 border-4 border-green-400 flex items-center justify-center">
-              <span className="text-green-400 font-mono text-sm">
-                <img src={Eu} />
-              </span>
+            <div className="w-72 h-72 rounded-full bg-gray-800 border-4 border-green-400 overflow-hidden">
+              <img src={Eu} alt="Foto de Francisco Hauch" className="w-full h-full object-cover" />
             </div>
+            
           </div>
         </div>
       </div>
