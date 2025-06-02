@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-4 md:mb-0">
             <GithubIcon className="text-green-400 mr-2" size={20} />
-            <span className="font-mono text-lg text-white">dev/<span className="text-green-400">portfolio</span></span>
+            <span className="font-mono text-lg text-white">dev/<span className="text-green-400">Portfolio</span></span>
           </div>
           
           <div className="text-gray-500 text-sm">
