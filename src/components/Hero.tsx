@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              I'm <span className="text-green-400">Your Name</span>
+              <span className="text-green-400">Francisco Hauch</span>
               <br />
               <span className="text-gray-300">Software Developer</span>
             </h1>
@@ -29,14 +29,14 @@ const Hero: React.FC = () => {
                 className="bg-green-500 hover:bg-green-600 text-gray-900 font-medium py-2 px-6 rounded-md transition-colors duration-300 flex items-center"
               >
                 <GitBranchIcon className="mr-2" size={18} />
-                View Projects
+                Projetos
               </a>
               <a 
                 href="#contact" 
                 className="bg-gray-800 hover:bg-gray-700 text-green-400 border border-green-400 font-medium py-2 px-6 rounded-md transition-colors duration-300 flex items-center"
               >
                 <UserIcon className="mr-2" size={18} />
-                Contact Me
+                Contato
               </a>
             </div>
           </div>
@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
           <div className="lg:w-1/2 flex justify-center">
             <div className="w-72 h-72 rounded-full bg-gray-800 border-4 border-green-400 flex items-center justify-center">
               <span className="text-green-400 font-mono text-sm">
-                <img src={EU} />
+                <img src={Eu} />
               </span>
             </div>
           </div>
