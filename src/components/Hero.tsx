@@ -1,6 +1,6 @@
 import React from 'react';
 import { TerminalIcon, GitBranchIcon, UserIcon } from './Icons';
-import Eu from "../imagens/EU.jpg"
+
 
 const Hero: React.FC = () => {
   return (
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
           
           <div className="lg:w-1/2 flex justify-center">
             <div className="w-72 h-72 rounded-full bg-gray-800 border-4 border-green-400 overflow-hidden">
-              <img src={Eu} alt="Foto de Francisco Hauch" className="w-full h-full object-cover" />
+              <img src="../../Eu.jpg" alt="Francisco Hauch" className="w-full h-full object-cover" />
             </div>
             
           </div>
