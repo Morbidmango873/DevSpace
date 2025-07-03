@@ -21,14 +21,14 @@ const Contact: React.FC = () => {
               className="flex items-center bg-gray-800 hover:bg-gray-700 text-white py-3 px-6 rounded-md transition-colors"
             >
               <MailIcon className="mr-2 text-green-400" size={20} />
-              your.email@example.com
+              fran.hauch@gmail.com
             </a>
           </div>
           
           <div className="flex justify-center space-x-6">
             <a 
               href="https://github.com" 
-              target="_blank" 
+              target="https://www.linkedin.com/in/francisco-hauch-0412962b5/" 
               rel="noopener noreferrer"
               className="bg-gray-800 p-3 rounded-full hover:bg-gray-700 transition-colors"
             >
