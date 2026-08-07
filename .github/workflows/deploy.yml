@@ -1,0 +1,77 @@
+name: Deploy
+
+# Publica o site no GitHub Pages a cada push na main, e roda as verificações
+# em qualquer pull request antes que ela seja mesclada.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # Permite disparar o deploy manualmente pela aba Actions.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # Um push novo cancela o build anterior que ainda estiver rodando: não faz
+  # sentido publicar uma versão já superada.
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Verificar e construir
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # `npm ci` instala exatamente as versões do package-lock.json, para que
+      # o build do CI seja idêntico ao da máquina local.
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Checar tipos
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # O artefato só é preparado no push da main — em pull request o job serve
+      # apenas como verificação.
+      - name: Configurar Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Enviar artefato
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Publicar
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+
+    # Permissões restritas ao job que realmente publica.
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
