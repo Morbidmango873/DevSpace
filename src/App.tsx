@@ -1,43 +1,53 @@
-import React, { useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import { GithubIcon } from './components/Icons';
+import { useEffect } from 'react';
+import { profile } from './content/profile';
+import { useLanguage } from './i18n/useLanguage';
+import { Nav } from './components/Nav';
+import { Footer } from './components/Footer';
+import { Hero } from './sections/Hero';
+import { Projects } from './sections/Projects';
+import { About } from './sections/About';
+import { Journey } from './sections/Journey';
+import { Contact } from './sections/Contact';
 
-function App() {
-  // Update document title
+export default function App() {
+  const { t, localized } = useLanguage();
+  const role = localized(profile.role);
+
+  // Título e descrição acompanham o idioma escolhido — o seletor não pode
+  // deixar a aba do navegador falando outra língua que o conteúdo.
   useEffect(() => {
-    document.title = 'Dev Portfolio';
-  }, []);
+    document.title = `${profile.name} — ${role}`;
+
+    const description = document.querySelector('meta[name="description"]');
+    description?.setAttribute('content', localized(profile.tagline));
+  }, [role, localized]);
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
-      <Header />
-      <main>
+    <>
+      {/* Primeiro elemento focável da página: permite pular a navegação inteira
+          no teclado. Fica invisível até receber foco. */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:font-heading focus:font-extrabold focus:text-bg"
+      >
+        {t('nav.skipToContent')}
+      </a>
+
+      <Nav />
+
+      {/* A margem à esquerda abre espaço para a régua lateral fixa a partir de
+          `lg`; abaixo disso o espaço vai para o topo, sob a barra do mobile. */}
+      <main id="main" className="pt-[57px] lg:ml-[200px] lg:pt-0">
         <Hero />
         <Projects />
+        <About />
+        <Journey />
         <Contact />
       </main>
-      <Footer />
-      
-      {/* Floating GitHub Corner */}
-      <a 
-        href="https://github.com" 
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed top-0 right-0 z-50 hidden md:block"
-        aria-label="View source on GitHub"
-      >
-        <div className="w-20 h-20 bg-gray-900 rotate-45 origin-bottom-left absolute -top-10 -right-10">
-          <div className="absolute -rotate-45 bottom-5 right-7">
-            <GithubIcon className="text-green-400" size={28} />
-          </div>
-        </div>
-      </a>
-    </div>
+
+      <div className="lg:ml-[200px]">
+        <Footer />
+      </div>
+    </>
   );
 }
-
-export default App;

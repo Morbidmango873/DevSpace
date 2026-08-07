@@ -1,3 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================================================
+   DESIGN TOKENS — sistema Modernist
+   ----------------------------------------------------------------------------
+   Valores transcritos de `_ds/modernist-.../styles.css` do projeto de design.
+   Este bloco é o único lugar que define a aparência do site: os componentes
+   usam nomes semânticos (bg-surface, text-accent, border-divider) e nunca
+   cores literais.
+
+   As cores ficam como canais RGB separados por espaço (e não "#f3f2f2") porque
+   é isso que permite ao Tailwind aplicar transparência sobre o token, como em
+   `bg-accent/10`.
+
+   Regras do sistema que estão codificadas aqui: raio zero em tudo, réguas de
+   2px entre seções e 1px dentro delas, tipografia Archivo com títulos em 800.
+   ========================================================================== */
+@layer base {
+  :root {
+    --color-bg: 243 242 242;
+    --color-surface: 234 233 233;
+    --color-text: 32 30 29;
+    --color-accent: 236 48 19;
+
+    /* Rampa neutra (100–900), escala perceptual compartilhada */
+    --color-neutral-100: 248 244 244;
+    --color-neutral-200: 234 231 231;
+    --color-neutral-300: 215 211 211;
+    --color-neutral-800: 68 65 65;
+    --color-neutral-900: 45 43 43;
+
+    /* Rampa do acento. O 700 existe porque o acento puro sobre o fundo claro
+       só alcança 3:1 — suficiente para ícones e títulos grandes, não para
+       texto corrido. Texto em vermelho no tamanho de parágrafo usa o 700. */
+    --color-accent-100: 255 242 239;
+    --color-accent-600: 221 43 15;
+    --color-accent-700: 174 24 0;
+    --color-accent-800: 124 20 5;
+
+    --font-heading: 'Archivo', system-ui, sans-serif;
+    --font-body: 'Archivo', system-ui, sans-serif;
+
+    /* Raio zero em todo o sistema — é uma decisão do design, não um descuido. */
+    --radius: 0px;
+  }
+
+  body {
+    @apply bg-bg font-body text-[15px] font-normal leading-[1.55] text-text antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-extrabold leading-[1.12] tracking-[-0.015em];
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Compensa o cabeçalho fixo do mobile: sem isto os links de âncora param
+       com o título da seção escondido atrás dele. */
+    scroll-padding-top: 5rem;
+  }
+
+  /* Foco de teclado do sistema: régua de 2px no acento, nunca o anel azul
+     padrão do navegador. */
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgb(var(--color-accent) / 0.3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Toda fotografia de conteúdo passa por aqui: o sistema imprime imagens em
+     preto e branco puro, sem tingimento. */
+  .photo-bw {
+    filter: grayscale(1) contrast(1.08);
+  }
+
+  /* Elemento revelado ao entrar na viewport. O estado inicial só é aplicado
+     quando o JS marca o elemento, então sem JS o conteúdo aparece normalmente
+     em vez de ficar invisível para sempre. */
+  [data-reveal='hidden'] {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  [data-reveal='shown'] {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+  }
+}

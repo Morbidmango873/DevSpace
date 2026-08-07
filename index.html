@@ -1,13 +1,26 @@
 <!doctype html>
-<html lang="en">
+<!-- O atributo lang é reajustado em tempo de execução pelo LanguageProvider
+     quando o visitante troca o idioma. -->
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Git-themed Portfolio Website</title>
+
+    <title>Francisco Hauch — Desenvolvedor de software</title>
+    <meta
+      name="description"
+      content="Portfólio de Francisco Hauch, desenvolvedor de software full stack — React, Node.js e MySQL."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Cor da barra do navegador no mobile: o fundo claro do sistema. -->
+    <meta name="theme-color" content="#f3f2f2" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
